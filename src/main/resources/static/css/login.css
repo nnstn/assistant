@@ -1,0 +1,12 @@
+body{
+    width: 1366px;
+    height: 599px;
+}
+.main{
+    margin-top: 200px;
+}
+.login-main{
+    width: 308px;
+    margin: 0 auto;
+    border: #0f0f0f;
+}
