@@ -1,5 +1,6 @@
 package com.nnstn.assistant.controller;
 
+import com.nnstn.assistant.domain.Result;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,8 @@ public class AuthController{
         map.put("username", username);
         map.put("password", password);
         map.put("captcha", captcha);
-        return  map;
+        System.out.printf(String.valueOf(map));
+        Result result = Result.success();
+        return result;
     }
 }
