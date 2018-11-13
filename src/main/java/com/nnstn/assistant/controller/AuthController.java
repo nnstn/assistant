@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,4 +25,11 @@ public class AuthController{
         Result result = Result.success();
         return result;
     }
+    @RequestMapping("leadToLogin")
+    public void leadToLogin(HttpServletResponse response) throws IOException {
+        response.sendRedirect("https://github.com/login/oauth/authorize?" +
+                "client_id=wangjn_bj&" +
+                "redirect_uri=http://localhost:8090/index");
+    }
+
 }
