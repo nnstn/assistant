@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nnstn.assistant.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.nnstn.assistant.po.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="phoneno" property="phoneno" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <result column="cretetime" property="cretetime" jdbcType="DATE" />
+    <result column="lastloginDate" property="lastlogindate" jdbcType="DATE" />
+    <result column="lastloginIP" property="lastloginip" jdbcType="VARCHAR" />
+    <result column="lastlogineMac" property="lastloginemac" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, password, email, phoneno, sex, salt, cretetime, lastloginDate, lastloginIP, 
+    lastlogineMac
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nnstn.assistant.po.User" >
+    insert into user (id, username, password, 
+      email, phoneno, sex, salt, 
+      cretetime, lastloginDate, lastloginIP, 
+      lastlogineMac)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{phoneno,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{salt,jdbcType=VARCHAR}, 
+      #{cretetime,jdbcType=DATE}, #{lastlogindate,jdbcType=DATE}, #{lastloginip,jdbcType=VARCHAR}, 
+      #{lastloginemac,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nnstn.assistant.po.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="phoneno != null" >
+        phoneno,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+      <if test="cretetime != null" >
+        cretetime,
+      </if>
+      <if test="lastlogindate != null" >
+        lastloginDate,
+      </if>
+      <if test="lastloginip != null" >
+        lastloginIP,
+      </if>
+      <if test="lastloginemac != null" >
+        lastlogineMac,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneno != null" >
+        #{phoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="cretetime != null" >
+        #{cretetime,jdbcType=DATE},
+      </if>
+      <if test="lastlogindate != null" >
+        #{lastlogindate,jdbcType=DATE},
+      </if>
+      <if test="lastloginip != null" >
+        #{lastloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="lastloginemac != null" >
+        #{lastloginemac,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nnstn.assistant.po.User" >
+    update user
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneno != null" >
+        phoneno = #{phoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="cretetime != null" >
+        cretetime = #{cretetime,jdbcType=DATE},
+      </if>
+      <if test="lastlogindate != null" >
+        lastloginDate = #{lastlogindate,jdbcType=DATE},
+      </if>
+      <if test="lastloginip != null" >
+        lastloginIP = #{lastloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="lastloginemac != null" >
+        lastlogineMac = #{lastloginemac,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nnstn.assistant.po.User" >
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phoneno = #{phoneno,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      cretetime = #{cretetime,jdbcType=DATE},
+      lastloginDate = #{lastlogindate,jdbcType=DATE},
+      lastloginIP = #{lastloginip,jdbcType=VARCHAR},
+      lastlogineMac = #{lastloginemac,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
