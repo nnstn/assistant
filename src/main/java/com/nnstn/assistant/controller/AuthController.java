@@ -4,6 +4,7 @@ import com.nnstn.assistant.domain.Result;
 import com.nnstn.assistant.po.User;
 import com.nnstn.assistant.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,8 +39,10 @@ public class AuthController extends BaseController{
         return Result.success();
     }
     @RequestMapping("/register")
-    public Object register(User user){
-
+    public Object register(HttpServletRequest request,@RequestBody User user){
+        userService.register(user);
+        //保存用户session状态
+        setCurrentUser(request, user);
         return Result.success();
     }
     @RequestMapping("leadToLogin")
